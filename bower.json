@@ -1,0 +1,21 @@
+{
+  "name": "meantodos",
+  "description": "Todo backend server",
+  "main": "server.js",
+  "authors": [
+    "jlab"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/JesseSoldat/MEANtodo-app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
