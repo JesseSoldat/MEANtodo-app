@@ -30,8 +30,20 @@ router.post('/todo', function(req, res, next){
 			} else {
 				res.json(result);
 			}
-		})
+		});
 	}
-})
+});
+
+router.delete('/todo/:id', function(req, res, next){
+	db.todos.remove({
+		_id: mongojs.ObjectId(req.params.id)
+	}, '', function(err, results){
+		if(err){
+			res.send(err);
+		} else {
+			res.json(results)
+		}
+	});
+});
 
 module.exports = router;

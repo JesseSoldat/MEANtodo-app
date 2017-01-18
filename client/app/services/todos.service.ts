@@ -20,4 +20,8 @@ export class TodoService {
 			.map(res => res.json());
 	}
 
+	deleteTodo(id){
+		return this.http.delete('/api/todo/'+id);
+	}
+
 }

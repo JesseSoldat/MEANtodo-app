@@ -1,7 +1,7 @@
 <div class="text-center">
 	<h1>Add Todo</h1>
 	<div class="form-group">
-		<input type="text" class="form-control input-lg" placeholder="Add Todo..." autofocus #todoText>
+		<input type="text" class="form-control input-lg" placeholder="Add Todo..." autofocus #todoText >
 		<br>
 		<button (click)="addTodo($event, todoText)" class="btn btn-primary btn-block">Create</button>
 	</div>
@@ -14,15 +14,20 @@
 	</div>
 
 
-	<div *ngFor="let todo of todos" >
-		<div class="col-md-1">
-			<input type="checkbox" />
-		</div>
-		<div class="col-md-7">
-			<h3>{{todo.title}}</h3>
-		</div>
-		<div class="col-md-4">
-			<input type="button" class="btn btn-danger pull-right">
-		</div>
+	<div *ngFor="let todo of todos">
+		<!-- <div class="row"> -->
+			<div class="col-md-1">
+				<input type="checkbox" [checked]="todo.isCompleted"/>
+			</div>
+			<div class="col-md-7">
+				<span>{{todo.title}}</span>
+			</div>
+			<div class="col-md-4">
+				<input type="button" class="btn btn-danger pull-right" value="Delete" (click)="deleteTodo(todo)">
+				<input type="button" class="btn btn-default pull-right" value="edit">
+			</div>
+		<!-- </div> -->
+		<br>
 	</div>
 </div>
+
