@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoService } from './services/todos.service';
 
+
 @Component({
 	moduleId: module.id,
   selector: 'my-app',

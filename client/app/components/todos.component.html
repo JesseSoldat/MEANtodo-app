@@ -1,0 +1,28 @@
+<div class="text-center">
+	<h1>Add Todo</h1>
+	<div class="form-group">
+		<input type="text" class="form-control input-lg" placeholder="Add Todo..." autofocus #todoText>
+		<br>
+		<button (click)="addTodo($event, todoText)" class="btn btn-primary btn-block">Create</button>
+	</div>
+</div>
+
+<div >
+
+	<div class="alert alert-info text-center" [hidden]="todos.length > 0">
+		<h3>No Todos</h3>
+	</div>
+
+
+	<div *ngFor="let todo of todos" >
+		<div class="col-md-1">
+			<input type="checkbox" />
+		</div>
+		<div class="col-md-7">
+			<h3>{{todo.title}}</h3>
+		</div>
+		<div class="col-md-4">
+			<input type="button" class="btn btn-danger pull-right">
+		</div>
+	</div>
+</div>
