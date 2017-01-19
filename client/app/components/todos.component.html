@@ -17,7 +17,7 @@
 	<div *ngFor="let todo of todos">
 		<!-- <div class="row"> -->
 			<div class="col-md-1">
-				<input type="checkbox" [checked]="todo.isCompleted"/>
+				<input type="checkbox" [checked]="todo.isCompleted" (click)="updateStatus(todo)"/>
 			</div>
 			<div class="col-md-7">
 				<span>{{todo.title}}</span>

@@ -41,6 +41,20 @@ export class TodosComponent {
 		}
 	}
 
+	updateStatus(todo){
+		var _todo = {
+			_id: todo._id,
+			title: todo.title,
+			isCompleted: !todo.isCompleted
+		};
+
+		this.todoService.updateTodo(_todo)
+			.map(res => res.json())
+			.subscribe(data => {
+				todo.isCompleted = !todo.isCompleted;
+			});
+	}
+
 	deleteTodo(todo){
 		console.log(todo);
 		var todos = this.todos;

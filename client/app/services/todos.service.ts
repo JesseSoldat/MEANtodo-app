@@ -24,4 +24,12 @@ export class TodoService {
 		return this.http.delete('/api/todo/'+id);
 	}
 
+	updateTodo(todo){
+		var headers = new Headers();
+		headers.append('Content-Type', 'application/json');
+		return this.http.put('/api/todo/'+todo._id, JSON.stringify(todo),{headers: headers});
+
+
+	}
+
 }

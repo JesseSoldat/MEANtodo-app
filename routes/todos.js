@@ -46,4 +46,34 @@ router.delete('/todo/:id', function(req, res, next){
 	});
 });
 
+router.put('/todo/:id', function(req, res, next){
+	var todo = req.body;
+	var updObj = {};
+	// console.log(req.body);
+
+	if(todo.isCompleted){
+		updObj.isCompleted = todo.isCompleted;
+	}
+	if(todo.title){
+		updObj.title = todo.title;
+	}
+	if(!updObj){
+		res.status(400);
+		res.json({
+			"error": "Invalid Data"
+		});
+	} else {
+		db.todos.update({
+			_id: mongojs.ObjectId(req.params.id)
+		}, updObj, {}, function(err, result){
+			if(err){
+				res.send(err);
+			} else {
+				res.json(result);
+			}
+		});
+	}
+
+});
+
 module.exports = router;
