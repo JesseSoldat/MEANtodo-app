@@ -23,6 +23,7 @@
 			<div class="col-md-7">
 				<span [class.hidden]="todo.isEditMode">{{todo.title}}</span>
 				<input type="text" [class.hidden]="!todo.isEditMode" [value]="todo.title" (keypress)="updateTodoText($event, todo)">
+				<input type="button" value="Cancel" [class.hidden]="!todo.isEditMode" (click)="setEditState(todo, false)" class="btn btn-danger">
 			</div>
 
 			<div class="col-md-4">
