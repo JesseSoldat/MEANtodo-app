@@ -19,12 +19,15 @@
 			<div class="col-md-1">
 				<input type="checkbox" [checked]="todo.isCompleted" (click)="updateStatus(todo)"/>
 			</div>
+
 			<div class="col-md-7">
-				<span>{{todo.title}}</span>
+				<span [class.hidden]="todo.isEditMode">{{todo.title}}</span>
+				<input type="text" [class.hidden]="!todo.isEditMode" [value]="todo.title" (keypress)="updateTodoText($event, todo)">
 			</div>
+
 			<div class="col-md-4">
 				<input type="button" class="btn btn-danger pull-right" value="Delete" (click)="deleteTodo(todo)">
-				<input type="button" class="btn btn-default pull-right" value="edit">
+				<input type="button" class="btn btn-default pull-right" value="Edit" [class.disabled]="todo.isCompleted" (click)="setEditState(todo, true)">
 			</div>
 		<!-- </div> -->
 		<br>

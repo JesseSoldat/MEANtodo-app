@@ -24,7 +24,7 @@ export class TodosComponent {
 			.subscribe(todos => this.todos = todos);
 	}
 
-	addTodo($event, todoText){
+	addTodo($event, todoText:string){
 		if($event.which === 1){
 			let result;
 			let newTodo = {
@@ -55,7 +55,7 @@ export class TodosComponent {
 			});
 	}
 
-	deleteTodo(todo){
+	deleteTodo(todo:Todo){
 		console.log(todo);
 		var todos = this.todos;
 
@@ -70,8 +70,33 @@ export class TodosComponent {
 					}
 				}
 			})
+	}
 
+	setEditState(todo, state:boolean){
+		if(state){
+			todo.isEditMode = state;
+			console.log(todo);
+		} else {
+			delete todo.isEditMode;
+		}
+	}
 
+	updateTodoText($event, todo){
+		if($event.which === 13){
+			todo.title = $event.target.value;
+			var _todo = {
+				_id: todo._id,
+				title: todo.title,
+				isCompleted: todo.isCompleted
+			};
+			console.log(_todo);
+
+			this.todoService.updateTodo(_todo)
+				.map(res => res.json())
+				.subscribe(data => {
+					this.setEditState(todo, false);
+				});
+		};
 
 	}
 }
